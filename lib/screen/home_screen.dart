@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_buggy/data/data.dart';
+import 'package:pocket_buggy/widgets/bar_chart.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -8,6 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<double> weeklyExpending;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,11 +39,21 @@ class _HomeScreenState extends State<HomeScreen> {
               (BuildContext context, int index) {
                 return Container(
                   margin: EdgeInsets.all(10.0),
-                  height: 100.0,
-                  color: Colors.red,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset(0, 2),
+                        blurRadius: 6.0
+                      )
+                    ]
+                  ),
+                  child: BarChart(weeklySpending),
                 );
               },
-              childCount: 10,
+              childCount: 1,
             ))
           ],
         ),
